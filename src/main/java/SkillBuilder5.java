@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * This class provides various Skill Builder 5 - Array
  * exercises.
@@ -17,8 +21,15 @@ public class SkillBuilder5
      */
     public static double[] prefixAverage(double[] data)
     {
-        //TODO: replace this line with your code.
-        return null;
+        double[] result = new double[data.length];
+        double prefixSum = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            prefixSum += data[i];
+            result[i] = prefixSum / (i + 1);
+        }
+
+        return result;
     }
 
     /**
@@ -31,8 +42,12 @@ public class SkillBuilder5
      */
     public static int  indexOf(int searchValue, int[] anArray)
     {
-        //TODO: replace this line with your code.
-        return 0;
+        for (int i = 0; i < anArray.length; i++) {
+            if (anArray[i] == searchValue) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -45,8 +60,12 @@ public class SkillBuilder5
      */
     public static int  indexOf(String s, String[] anArray)
     {
-        //TODO: replace this line with your code.
-        return 0;
+        for (int i = 0; i < anArray.length; i++) {
+            if (anArray[i].equals(s)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -58,8 +77,12 @@ public class SkillBuilder5
      */
     public static String[] remove(String s, String[] anArray)
     {
-        // add your code here
-        return null;
+        List<String> list = new ArrayList<String>(Arrays.asList(anArray));
+        while(list.contains(s)) {
+            list.remove(s);
+        }
+        String[] str_array = list.toArray(new String[0]);
+        return str_array;
     }
 
     /**
@@ -68,6 +91,17 @@ public class SkillBuilder5
      */
     public static void reverse(int[] anArray)
     {
-        // add your code here
+        int left = 0;
+        int right = anArray.length - 1;
+
+        while (left < right) {
+            int temp = anArray[left];
+            anArray[left] = anArray[right];
+            anArray[right] = temp;
+
+            left++;
+            right--;
+        }
     }
 }
+
